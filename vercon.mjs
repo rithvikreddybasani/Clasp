@@ -10,9 +10,9 @@ import asciiTree from "ascii-tree";
 
 const program = new Command();
 
-class Clamp {
+class Clasp {
   constructor(repoPath = ".") {
-    this.repoPath = path.join(repoPath, ".clamp");
+    this.repoPath = path.join(repoPath, ".clasp");
     this.objectsPath = path.join(this.repoPath, "objects");
     this.headPath = path.join(this.repoPath, "HEAD");
     this.indexPath = path.join(this.repoPath, "index");
@@ -25,7 +25,7 @@ class Clamp {
       await fs.writeFile(this.headPath, "", { flag: "wx" });
       await fs.writeFile(this.indexPath, JSON.stringify([]), { flag: "wx" });
     } catch (error) {
-      console.log("Already initialized the .clamp folder");
+      console.log("Already initialized the .clasp folder");
     }
   }
 
@@ -191,41 +191,33 @@ class Clamp {
   }
 }
 
-/*(async () => {
-  const clamp = new Clamp();
- // await clamp.add("test.txt");
-  // await clamp.commit("Third Commit");
-  //await clamp.log();
-   await clamp.showCommitDiff("06b15c7f49fa811c6cf2f21e23e69c5d1c8944ed");
-})();*/
-
 program.command("init").action(async () => {
-  const clamp = new Clamp();
+  const clasp = new Clasp();
 });
 
 program.command("add <file>").action(async (file) => {
-  const clamp = new Clamp();
-  await clamp.add(file);
+  const clasp = new Clasp();
+  await clasp.add(file);
 });
 
 program.command("commit <message>").action(async (message) => {
-  const clamp = new Clamp();
-  await clamp.commit(message);
+  const clasp = new Clasp();
+  await clasp.commit(message);
 });
 
 program.command("log").action(async () => {
-  const clamp = new Clamp();
-  await clamp.log();
+  const clasp = new Clasp();
+  await clasp.log();
 });
 
 program.command("show <commitHash>").action(async (commitHash) => {
-  const clamp = new Clamp();
-  await clamp.showCommitDiff(commitHash);
+  const clasp = new Clasp();
+  await clasp.showCommitDiff(commitHash);
 });
 
 program.command("tree").action(async () => {
-  const clamp = new Clamp();
-  await clamp.generateCommitTree();
+  const clasp = new Clasp();
+  await clasp.generateCommitTree();
 });
 
 program.parse(process.argv);
