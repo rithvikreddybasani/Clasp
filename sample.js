@@ -8,3 +8,4 @@ console.log(
   "Adding these extra lines so you that you can understand the true meaning of commit statements"
 );
 console.log("For checking purposes bro ");
+console.log("Added another line");
